@@ -1,0 +1,24 @@
+- hosts: localhost
+  tasks:
+# there are 2 repos in RHEL8 one is AppStream and onther is BaseOS
+          - yum_repository:
+                  name: "yum"
+                  baseurl: "file:///dvd/AppStream"
+                  description: "1strepo"
+#its runs successfully when you mount your cd in /dvd direstory
+                  gpgcheck: 0
+# if you wants to enabled gpgcheck then u convert it value 0 to 1..
+# if you enabled gpgkey then you must indicate your gpgkey path
+#                 gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
+                  enabled: yes
+          
+          - yum_repository:
+                  name: "yum2"
+                  baseurl: "file:///dvd/BaseOS"
+                  description: "2ndrepo"
+#its runs successfully when you mount your cd in /dvd direstory
+                  gpgcheck: 0
+# if you wants to enabled gpgcheck then u convert it value 0 to 1..
+# if you enabled gpgkey then you must indicate your gpgkey path
+#                 gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
+                  enabled: yes
